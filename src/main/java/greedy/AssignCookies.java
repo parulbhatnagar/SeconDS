@@ -8,23 +8,25 @@ public class AssignCookies {
 
 
     public int findContentChildren(int[] g, int[] s) {
+        var greed = Arrays.stream(g).sorted().mapToObj(Integer::valueOf).collect(Collectors.toList());
+        var cookiesTray = Arrays.stream(s).sorted().mapToObj(Integer::valueOf).collect(Collectors.toList());
 
-        // convert int[] g to List of Integer
-        // then we will sort it
-        var greed = Arrays.stream(g).sorted().mapToObj(Integer::valueOf).collect(Collectors.toUnmodifiableList());
-        var cookies = Arrays.stream(s).sorted().mapToObj(Integer::valueOf).collect(Collectors.toUnmodifiableList());
+        int sizeOfCookiesTray = cookiesTray.size(), sizeOfGreed = greed.size();
 
-        int returnValue;
-        System.out.println(greed);
-
-        System.out.println(cookies);
-
-        // cookies.forEach(integer -> integer);
+        int greedTraversal = 0, cookiesTrayTraversal = 0, satisfiedKids = 0;
 
 
+        while (greedTraversal < sizeOfGreed && cookiesTrayTraversal < sizeOfCookiesTray){
+            if (greed.get(greedTraversal) <= cookiesTray.get(cookiesTrayTraversal)){
+                greedTraversal++;
+                cookiesTrayTraversal++;
+                satisfiedKids++;
+            }
+            else{
+                cookiesTrayTraversal++;
+            }
+        }
 
-
-
-        return 0;
+        return satisfiedKids;
     }
 }

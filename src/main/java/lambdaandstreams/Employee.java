@@ -12,12 +12,24 @@ public class Employee {
         this.gender = gender;
     }
 
+    public Employee() {
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", salary=" + salary +
+                ", gender=" + gender +
+                '}';
     }
 
     public int getSalary() {
